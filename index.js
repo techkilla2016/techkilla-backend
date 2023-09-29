@@ -1,14 +1,22 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const router = require('./router')
-const port = 2917 || process.env.PORT
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const router = require('./router');
+const port = process.env.PORT || 2917;
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(cors())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(router)
+// Configure CORS to allow requests from your frontend (http://localhost:3001)
+app.use(cors({
+    origin: ['http://localhost:3001','http://localhost:3000', 'https://techkilla.com/'], // Change this to your frontend's URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+}));
+
+app.use(router);
+
 app.listen(port, () => {
-    console.log(`http://localhost:${port}`)
-})
+    console.log(`Server is running on http://localhost:${port}`);
+});
