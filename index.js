@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configure CORS to allow requests from your frontend (http://localhost:3001)
 app.use(cors({
-    origin: ['http://localhost:3001','http://localhost:3000', 'https://techkilla.com/', 'https://tk-marketing.vercel.app/'], // Change this to your frontend's URL
+    origin: ['https://tkmarketing.vercel.app/', 'https://techkilla.com/', 'https://tk-marketing.vercel.app/'], // Change this to your frontend's URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204,
