@@ -58,7 +58,7 @@ function sendEmail(req, res, next) {
     const data = req.body
     const mainOption = {
       from: 'contact@techkilla.com',
-      to: 'mukesh@techkilla.com',
+      to: 'yashi@techkilla.com, mukesh@techkilla.com',
       subject: req?.body?.job,
       html: contactForm(data)
     }
