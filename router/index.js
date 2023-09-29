@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const qrSolution = require('./controller/qr-data')
 const sendEmail = require('../middleware/sendEmial')
+const qrSolutionData = require('./controller/qr-data/fetchData')
 const router = Router()
 
 router.get('/', (req, res) => {
@@ -8,4 +9,5 @@ router.get('/', (req, res) => {
 })
 
 router.post('/qr-solution', sendEmail, qrSolution)
+router.get('/qr-solution', qrSolutionData)
 module.exports = router
