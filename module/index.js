@@ -41,8 +41,8 @@ const qrSchema = new mongoose.Schema({
         default: Date.now()
     },
     utm_source: String,
-    utm_medium: string,
-    utm_campaign: string
+    utm_medium: String,
+    utm_campaign: String
 })
 
 const qrModel = new mongoose.model('qr_solution', qrSchema)
