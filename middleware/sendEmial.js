@@ -1,9 +1,9 @@
 const nodeMalter = require('nodemailer')
 function sendEmail(req, res, next) {
-    try {
-        const contactForm = (data) => {
-            const { name, email, company, phone, job, country } = data
-            return `
+  try {
+    const contactForm = (data) => {
+      const { name, email, company, phone, job, country } = data
+      return `
               <html>
               <head>
                 <style>
@@ -44,40 +44,40 @@ function sendEmail(req, res, next) {
               </body>
             </html>
             `
-        }
-
-        const transporter = nodeMalter.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'contact@techkilla.com',
-                pass: 'mytkulpqycglddzv'
-            },
-            port: 465,
-            host: 'smtp.gmail.com'
-        })
-        const data = req.body
-        const mainOption = {
-            from: 'contact@techkilla.com',
-            to: 'mukesh@techkilla.com',
-            subject: req?.body?.job,
-            html: contactForm(data)
-        }
-        transporter.sendMail(mainOption, (error, info) => {
-            if (error) {
-                res.status(405).json({
-                    massage: "email sending failed",
-                    status: false
-                })
-            } else {
-                next()
-            }
-        })
-    } catch (error) {
-        res.status(405).json({
-            status: false,
-            massage: error.message
-        })
     }
+
+    const transporter = nodeMalter.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'contact@techkilla.com',
+        pass: 'mytkulpqycglddzv'
+      },
+      port: 465,
+      host: 'smtp.gmail.com'
+    })
+    const data = req.body
+    const mainOption = {
+      from: 'contact@techkilla.com',
+      to: 'mukesh@techkilla.com',
+      subject: req?.body?.job,
+      html: contactForm(data)
+    }
+    transporter.sendMail(mainOption, (error, info) => {
+      if (error) {
+        res.status(405).json({
+          massage: "email sending failed",
+          status: false
+        })
+      } else {
+        next()
+      }
+    })
+  } catch (error) {
+    res.status(405).json({
+      status: false,
+      massage: error.message
+    })
+  }
 
 }
 

@@ -20,7 +20,7 @@ const qrSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    county: {
+    country: {
         type: String,
         required: true
     },
@@ -35,7 +35,14 @@ const qrSchema = new mongoose.Schema({
     company: {
         type: String,
         required: true
-    }
+    },
+    date: {
+        type: Date,
+        default: Date.now()
+    },
+    utm_source: String,
+    utm_medium: string,
+    utm_campaign: string
 })
 
 const qrModel = new mongoose.model('qr_solution', qrSchema)

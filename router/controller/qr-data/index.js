@@ -6,10 +6,13 @@ async function qrSolution(req, res) {
         const model = new qrModel({
             name: data?.name,
             email: data?.email,
-            county: data?.county,
+            country: data?.country,
             phone: data?.phone,
             job: data?.job,
             company: data?.company,
+            utm_source: data?.utm_source,
+            utm_medium: data?.utm_medium,
+            utm_campaign: data?.utm_campaign
         })
 
         const isSave = await model.save()
