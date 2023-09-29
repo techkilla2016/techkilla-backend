@@ -45,5 +45,21 @@ const qrSchema = new mongoose.Schema({
     utm_campaign: String
 })
 
+const authSchema = new mongoose.Schema({
+    password: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    token: {
+        type: String,
+        required: true
+    }
+})
+const authModel = new mongoose.model('admin', authSchema)
+
 const qrModel = new mongoose.model('qr_solution', qrSchema)
-module.exports = { qrModel }
+module.exports = { qrModel, authModel }
