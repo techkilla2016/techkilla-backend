@@ -59,7 +59,40 @@ const authSchema = new mongoose.Schema({
         required: true
     }
 })
-const authModel = new mongoose.model('admin', authSchema)
 
+const contactSchema = new mongoose.Schema({
+    First_Name: {
+        type: String,
+        required: true
+    },
+    Last_Name: {
+        type: String,
+        required: true
+    },
+    Phone_Number: {
+        type: String,
+        required: true
+    },
+    Opportunity: {
+        type: String,
+        required: true
+    },
+    about_us: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now()
+    },
+
+})
+
+const authModel = new mongoose.model('admin', authSchema)
 const qrModel = new mongoose.model('qr_solution', qrSchema)
-module.exports = { qrModel, authModel }
+const contactModel = new mongoose.model('contact', contactSchema)
+module.exports = { qrModel, authModel, contactModel }

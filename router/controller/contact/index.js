@@ -1,4 +1,5 @@
 const nodeMalter = require('nodemailer')
+const { contactModel } = require('../../controller/contact')
 require('dotenv').config()
 const contactForm = (data) => {
   const { name, email, phone, company, message } = data
@@ -44,7 +45,15 @@ const contactForm = (data) => {
       `
 }
 const careersForm = (data) => {
-  const { First_Name, Last_Name, Phone_Number, Opportunity, about_us } = data
+  const { First_Name, Last_Name, Phone_Number, Opportunity, about_us, email } = data
+  const submitData = new contactModel({
+    First_Name, Last_Name, Phone_Number, Opportunity, about_us, email
+  })
+  submitData.save().then(res => {
+
+  }).catch(error => {
+
+  })
   return `
         <html>
         <head>
