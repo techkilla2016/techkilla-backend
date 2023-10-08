@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const router = require('./router');
+require('dotenv').config()
 const port = process.env.PORT || 2917;
 
 app.use(express.json());
@@ -10,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 // Configure CORS to allow requests from your frontend (http://localhost:3001)
 app.use(cors({
     // origin: ['https://tkmarketing.vercel.app/', 'https://techkilla.com/', 'https://tk-marketing.vercel.app/'], 
-    origin: "*", 
+    origin: "*",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204,
