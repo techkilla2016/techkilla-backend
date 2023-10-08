@@ -1,3 +1,4 @@
+const nodeMalter = require('nodemailer')
 require('dotenv').config()
 const contactForm = (data) => {
   const { name, email, phone, company, message } = data
